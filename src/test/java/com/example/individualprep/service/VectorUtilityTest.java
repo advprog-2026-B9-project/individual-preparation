@@ -1,7 +1,5 @@
 package com.example.individualprep.service;
 
-import com.example.individualprep.service.VectorUtility;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
