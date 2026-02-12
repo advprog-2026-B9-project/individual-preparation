@@ -3,9 +3,7 @@ name: CI with Checkstyle and SonarCloud
 on:
   push:
     branches:
-      - 'feat/**'
-      - 'test/**'
-      - 'chore/**'
+      - 'huda/**'
   pull_request:
     branches:
       - 'main'
