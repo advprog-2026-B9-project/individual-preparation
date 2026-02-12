@@ -31,10 +31,18 @@ public class VectorUtility {
 
         return resultVector;
     }
-    
+
     public double dotProduct(double[] v1, double[] v2) {
-        // TODO: Implement me properly!
-        return 0.0;
+        if (v1.length != v2.length) {
+            throw new IllegalArgumentException("Vector lengths must be equal");
+        }
+
+        double sum = 0.0;
+
+        for (int index = 0; index < v1.length; index++) {
+            sum += v1[index] * v2[index];
+        }
+        return sum;
     }
     
     public double norm(double[] v1) {
