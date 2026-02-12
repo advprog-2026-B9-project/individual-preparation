@@ -15,9 +15,9 @@ public class ArithmeticUtility {
         return 0.0;
     }
 
-    public double multiply(double o1, double o2) {
-        // TODO: Implement me properly!
-        return 0.0;
+    public double multiply(double firstOperand, double secondOperand) {
+        // + 0.0 for result = -0.0
+        return firstOperand * secondOperand + 0.0;
     }
 
     public double divide(double o1, double o2) {
