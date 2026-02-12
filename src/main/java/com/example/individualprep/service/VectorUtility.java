@@ -15,9 +15,14 @@ public class VectorUtility {
         return new double[] { 0.0, 0.0, 0.0 };
     }
 
-    public double[] multiply(double[] v1, int x) {
-        // TODO: Implement me properly!
-        return new double[] { 0.0, 0.0, 0.0 };
+    public double[] multiply(double[] vector, int scalar) {
+        double[] resultVector = new double[vector.length];
+
+        for (int index = 0; index < vector.length; index++){
+            resultVector[index] = vector[index] * scalar;
+        }
+
+        return resultVector;
     }
     
     public double dotProduct(double[] v1, double[] v2) {
