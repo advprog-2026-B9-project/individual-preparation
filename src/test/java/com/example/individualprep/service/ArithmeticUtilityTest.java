@@ -53,7 +53,7 @@ public class ArithmeticUtilityTest {
     }
 
     @Test
-    void testMultiplyNegativeZero(){
+    void testMultiplyResultingNegativeZero(){
         double firstOperand = 5.0;
         double expected = 0.0;
         double result = service.multiply(firstOperand, -0.0);
