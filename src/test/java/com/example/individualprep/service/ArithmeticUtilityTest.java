@@ -2,6 +2,7 @@ package com.example.individualprep.service;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ArithmeticUtilityTest {
 
@@ -59,6 +60,36 @@ public class ArithmeticUtilityTest {
         double result = service.multiply(firstOperand, -0.0);
 
         assertEquals(expected, result);
+    }
+
+    @Test
+    void testDivide() {
+        double result = service.divide(10.0, 5.0);
+        assertEquals(2.0, result);
+    }
+
+    @Test
+    void testDivideZeroByPositive() {
+        double result = service.divide(0.0, 5.0);
+        assertEquals(0.0, result);
+    }
+
+    @Test
+    void testDividePositiveByZero() {
+        double result = service.divide(5.0, 0.0);
+        assertEquals(Double.POSITIVE_INFINITY, result);
+    }
+
+    @Test
+    void testDivideNegativeByZero() {
+        double result = service.divide(-5.0, 0.0);
+        assertEquals(Double.NEGATIVE_INFINITY, result);
+    }
+
+    @Test
+    void testZeroDividedByZero() {
+        double result = service.divide(0.0, 0.0);
+        assertTrue(Double.isNaN(result));
     }
 
     @Test

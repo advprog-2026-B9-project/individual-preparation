@@ -19,9 +19,8 @@ public class ArithmeticUtility {
         return firstOperand * secondOperand + 0.0;
     }
 
-    public double divide(double o1, double o2) {
-        // TODO: Implement me properly!
-        return 0.0;
+    public double divide(double firstOperand, double secondOperand) {
+        return firstOperand / secondOperand;
     }
 
     public double exponent(double o1, int n) {
