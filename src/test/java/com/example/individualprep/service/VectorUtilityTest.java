@@ -1,11 +1,6 @@
 package com.example.individualprep.service;
 
-import com.example.individualprep.service.VectorUtility;
-
 import org.junit.jupiter.api.Test;
-
-import java.util.Vector;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VectorUtilityTest {
