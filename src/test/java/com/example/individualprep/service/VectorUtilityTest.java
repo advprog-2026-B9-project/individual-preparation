@@ -110,4 +110,37 @@ public class VectorUtilityTest {
             assertEquals(expectedVector[index], resultVector[index]);
         }
     }
+
+    @Test
+    void testDotProductNormal() {
+        double[] v1 = new double[]{1.0, 2.0, 3.0};
+        double[] v2 = new double[]{4.0, 5.0, 6.0};
+
+        double result = service.dotProduct(v1, v2);
+
+        assertEquals(32.0, result);
+    }
+
+    @Test
+    void testDotProductNegativeValues() {
+        double[] v1 = new double[]{-1.0, 2.0, -3.0};
+        double[] v2 = new double[]{4.0, -5.0, 6.0};
+
+        double result = service.dotProduct(v1, v2);
+
+        assertEquals(-32.0, result);
+    }
+
+    @Test
+    void testDotProductDifferentLengths() {
+        double[] v1 = new double[]{1.0, 2.0};
+        double[] v2 = new double[]{1.0, 2.0, 3.0};
+
+        try {
+            service.dotProduct(v1, v2);
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Vector lengths must be equal", e.getMessage());
+        }
+    }
 }
