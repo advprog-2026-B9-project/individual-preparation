@@ -1,12 +1,16 @@
 plugins {
 	id 'java'
+	id 'checkstyle'
+	id "org.sonarqube" version "7.1.0.6387"
 	id 'org.springframework.boot' version '4.0.2'
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
+
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 description = 'Individual preparation for the Advanced Programming course at the Faculty of Computer Science Universitas Indonesia'
+
 
 java {
 	toolchain {
@@ -14,15 +18,34 @@ java {
 	}
 }
 
+
+checkstyle {
+	toolVersion = '10.12.5'
+	configFile = file("${rootProject.projectDir}/config/checkstyle/checkstyle.xml")
+	ignoreFailures = false
+	showViolations = true
+}
+
+
+sonar {
+	properties {
+		property "sonar.projectKey", "advprog-2026-B9-project_individual-preparation"
+		property "sonar.organization", "advprog-2026-b9-project"
+	}
+}
+
+
 repositories {
 	mavenCentral()
 }
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
