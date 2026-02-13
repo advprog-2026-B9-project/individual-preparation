@@ -2,6 +2,7 @@ package com.example.individualprep.service;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ArithmeticUtilityTest {
 
@@ -62,6 +63,36 @@ public class ArithmeticUtilityTest {
     }
 
     @Test
+    void testDivide() {
+        double result = service.divide(10.0, 5.0);
+        assertEquals(2.0, result);
+    }
+
+    @Test
+    void testDivideZeroByPositive() {
+        double result = service.divide(0.0, 5.0);
+        assertEquals(0.0, result);
+    }
+
+    @Test
+    void testDividePositiveByZero() {
+        double result = service.divide(5.0, 0.0);
+        assertEquals(Double.POSITIVE_INFINITY, result);
+    }
+
+    @Test
+    void testDivideNegativeByZero() {
+        double result = service.divide(-5.0, 0.0);
+        assertEquals(Double.NEGATIVE_INFINITY, result);
+    }
+
+    @Test
+    void testZeroDividedByZero() {
+        double result = service.divide(0.0, 0.0);
+        assertTrue(Double.isNaN(result));
+    }
+
+    @Test
     void testExponentPositiveBaseAndPower() {
         double result = service.exponent(2,3);
         assertEquals(8.0, result);
@@ -92,5 +123,22 @@ public class ArithmeticUtilityTest {
     void testExponentNegativePower() {
         double result = service.exponent(2.0, -2);
         assertEquals(0.25, result);
+    }
+    @Test
+    void testSubtractNegativeAndPositive() {
+        double result = service.subtract(-5.0, 3.0);
+        assertEquals(-8.0, result);
+    }
+
+    @Test
+    void testSubtractZero() {
+        double result = service.subtract(5.0, 0.0);
+        assertEquals(5.0, result);
+    }
+
+    @Test
+    void testSubtractSameNumbers() {
+        double result = service.subtract(4.0, 4.0);
+        assertEquals(0.0, result);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.individualprep.service;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VectorUtilityTest {
 
@@ -45,7 +45,32 @@ public class VectorUtilityTest {
             assertEquals(expected[i], result[i], 0.0001);
         }
     }
+    
+    @Test
+    void testSubtractVectors() {
+        double[] vector1 = new double[]{1.0, 2.0, 3.0};
+        double[] vector2 = new double[]{1.0, 2.0, 3.0};
 
+        double[] resultVector = service.subtract(vector1, vector2);
+        double[] expectedVector = new double[]{0.0, 0.0, 0.0};
+
+        for (int index = 0; index < resultVector.length; index++){
+            assertEquals(expectedVector[index], resultVector[index]);
+        }
+    }
+
+    @Test
+    void testSubtractDifferentLengths() {
+        double[] vector1 = new double[]{1.0, 2.0, 3.0};
+        double[] vector2 = new double[]{1.0, 2.0};
+
+        try{
+            service.subtract(vector1, vector2);
+        }
+        catch(IllegalArgumentException e) {
+            assertEquals("Vector lengths must be equal", e.getMessage());
+        }
+    }
 
     @Test
     void testMultiplyWithPositive(){
@@ -83,6 +108,39 @@ public class VectorUtilityTest {
 
         for (int index = 0; index < resultVector.length; index++){
             assertEquals(expectedVector[index], resultVector[index]);
+        }
+    }
+
+    @Test
+    void testDotProductNormal() {
+        double[] v1 = new double[]{1.0, 2.0, 3.0};
+        double[] v2 = new double[]{4.0, 5.0, 6.0};
+
+        double result = service.dotProduct(v1, v2);
+
+        assertEquals(32.0, result);
+    }
+
+    @Test
+    void testDotProductNegativeValues() {
+        double[] v1 = new double[]{-1.0, 2.0, -3.0};
+        double[] v2 = new double[]{4.0, -5.0, 6.0};
+
+        double result = service.dotProduct(v1, v2);
+
+        assertEquals(-32.0, result);
+    }
+
+    @Test
+    void testDotProductDifferentLengths() {
+        double[] v1 = new double[]{1.0, 2.0};
+        double[] v2 = new double[]{1.0, 2.0, 3.0};
+
+        try {
+            service.dotProduct(v1, v2);
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Vector lengths must be equal", e.getMessage());
         }
     }
 }
