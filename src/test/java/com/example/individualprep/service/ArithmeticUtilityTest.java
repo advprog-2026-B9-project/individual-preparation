@@ -93,4 +93,21 @@ public class ArithmeticUtilityTest {
         double result = service.exponent(2.0, -2);
         assertEquals(0.25, result);
     }
+    @Test
+    void testSubtractNegativeAndPositive() {
+        double result = service.subtract(-5.0, 3.0);
+        assertEquals(-8.0, result);
+    }
+
+    @Test
+    void testSubtractZero() {
+        double result = service.subtract(5.0, 0.0);
+        assertEquals(5.0, result);
+    }
+
+    @Test
+    void testSubtractSameNumbers() {
+        double result = service.subtract(4.0, 4.0);
+        assertEquals(0.0, result);
+    }
 }
