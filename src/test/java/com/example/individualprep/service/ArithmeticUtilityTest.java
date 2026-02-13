@@ -60,4 +60,37 @@ public class ArithmeticUtilityTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    void testExponentPositiveBaseAndPower() {
+        double result = service.exponent(2,3);
+        assertEquals(8.0, result);
+    }
+
+    @Test
+    void testExponentZeroPower() {
+        double result = service.exponent(2.0, 0);
+        assertEquals(1.0, result);
+    }
+
+    @Test
+    void testExponentNegativeBase() {
+        double resultOdd = service.exponent(-2.0,3);
+        assertEquals(-8.0, resultOdd);
+
+        double resultEven = service.exponent(-2.0,2);
+        assertEquals(4.0, resultEven);
+    }
+
+    @Test
+    void testExponentBaseZero() {
+        double result = service.exponent(0.0, 2);
+        assertEquals(0.0, result);
+    }
+
+    @Test
+    void testExponentNegativePower() {
+        double result = service.exponent(2.0, -2);
+        assertEquals(0.25, result);
+    }
 }
